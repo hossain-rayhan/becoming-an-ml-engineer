@@ -102,6 +102,9 @@ By week 12, have these ready:
 - One-page project tracker with weekly goals
 - A hard rule: no more than 3 portfolio-grade builds in 12 weeks
 
+### Project Tracker
+- [PROJECT_TRACKER.md](PROJECT_TRACKER.md) - Weekly goals and progress tracking
+
 ### Recommended References
 - [PyTorch Get Started](https://pytorch.org/get-started/locally/)
 - [Transformers Documentation](https://huggingface.co/docs/transformers/index)
@@ -111,21 +114,15 @@ By week 12, have these ready:
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 - [vLLM Documentation](https://docs.vllm.ai/)
 
-### Suggested Environment
-```bash
-conda create -n ml-eng python=3.10
-conda activate ml-eng
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-pip install transformers datasets accelerate peft trl sentencepiece
-pip install wandb tensorboard evaluate scikit-learn pandas matplotlib
-pip install fastapi uvicorn pydantic
-pip install vllm
-pip install jupyter black ruff pytest
-```
-
 ### Notes
 - Treat `flash-attn`, `deepspeed`, `bitsandbytes`, and `TensorRT-LLM` as optional advanced dependencies.
 - Do not burn a week fighting CUDA or compiler issues unless low-level performance work is one of your explicit goals.
+
+### Local Setup Files
+- [Setup Guide (WSL)](installation/SETUP_WSL.md) - Step-by-step installation instructions
+- [Automated Setup Script](installation/setup.sh) - Run `bash installation/setup.sh`
+- [Requirements Lock File](installation/requirements.txt) - Pinned package versions
+- [Azure GPU Setup](installation/AZURE_GPU_SETUP.md) - For Week 5+ when GPU is needed
 
 ---
 
@@ -149,7 +146,7 @@ If you already remember the math, compress this week into 2-3 days and move to i
 ### Core Resources
 - [3Blue1Brown: Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)
 - [3Blue1Brown: Neural Networks](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
-- [Mathematics for Machine Learning](https://mml-book.github.io/): selected review chapters only
+- [Mathematics for Machine Learning](https://mml-book.github.io/): Chapter 2 (Linear Algebra), Chapter 5 (Vector Calculus), Chapter 7 (Optimization)
 - [CS229 Linear Algebra Review](https://cs229.stanford.edu/section/cs229-linalg.pdf) and [CS229 Probability Review](https://cs229.stanford.edu/section/cs229-prob.pdf)
 
 ### Additional References
