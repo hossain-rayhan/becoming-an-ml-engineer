@@ -1,10 +1,12 @@
 # ML Engineer Study Plan: Senior Engineer Transitioning to LLM/AI Labs
 
-**Target Roles:** ML Engineer, Applied ML Engineer, Training/Inference Engineer, Model Systems Engineer  
+**Target Roles:** ML Platform Engineer, ML Infrastructure Engineer, MLOps Engineer, LLM Inference/Serving Engineer (primary focus); ML Engineer, Applied ML Engineer, Training/Inference Engineer (secondary)  
 **Target Companies:** Anthropic, OpenAI, and similar frontier-model or high-caliber applied AI teams  
 **Duration:** 12 weeks (3 months)  
 **Commitment:** 20-25 hours/week  
 **Audience:** Senior software engineers with strong implementation skills who want a realistic, industry-standard preparation path into ML engineering
+
+> **Recommended focus for infrastructure-leaning engineers:** Engineers coming from distributed systems and infrastructure backgrounds (Kubernetes, containers, service mesh, observability, databases) already hold the scarce half of ML engineering. Rather than competing as a generic ML generalist against people with years of modeling depth, it is often stronger to specialize into **ML Infrastructure / MLOps / ML Platform Engineering**, where those systems skills compound instead of resetting. See [Specialization Track: ML Infrastructure / MLOps / ML Platform Engineering](#specialization-track-ml-infrastructure--mlops--ml-platform-engineering) below for how to weight this plan toward that goal.
 
 ---
 
@@ -146,6 +148,7 @@ If you already remember the math, compress this week into 2-3 days and move to i
 ### Core Resources
 - [3Blue1Brown: Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)
 - [3Blue1Brown: Neural Networks](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
+- [3Blue1Brown: Gradient Descent](https://www.youtube.com/watch?v=IHZwWFHWa-w)
 - [Mathematics for Machine Learning](https://mml-book.github.io/): Chapter 2 (Linear Algebra), Chapter 5 (Vector Calculus), Chapter 7 (Optimization)
 - [CS229 Linear Algebra Review](https://cs229.stanford.edu/section/cs229-linalg.pdf) and [CS229 Probability Review](https://cs229.stanford.edu/section/cs229-prob.pdf)
 
@@ -153,11 +156,7 @@ If you already remember the math, compress this week into 2-3 days and move to i
 - [Khan Academy: Calculus 1](https://www.khanacademy.org/math/calculus-1)
 
 ### Core Build
-**Project 1A: Optimization from Scratch**
-- linear regression with gradient descent
-- logistic regression with gradient descent
-- tiny autograd engine or computational graph
-- plots of learning rate sensitivity and loss curves
+**[Project 1A: Optimization from Scratch](project-1a-optimization/README.md)**
 
 ### What You Must Be Able to Explain
 - why gradients vanish or explode
@@ -605,6 +604,76 @@ Choose one and finish it well:
 - limitations section
 - future work section
 - clear explanation of tradeoffs and failures
+
+---
+
+## Specialization Track: ML Infrastructure / MLOps / ML Platform Engineering
+
+This track is the recommended focus for engineers coming from an infrastructure and distributed-systems background. It does **not** replace the core plan \u2014 it re-weights it. You still build ML fundamentals so you are credible and can speak the language, but your *depth and portfolio* lean toward running AI reliably at scale, which is where your experience is rare and in demand.
+
+### Why This Focus, Not Generic "AI/ML Engineer"
+
+- "AI/ML Engineer" as a title is fine, but as a *career target for you* it is too broad. Competing as a generalist ML engineer pits you against people with years of modeling and math depth, and throws away your systems edge.
+- The modeling/research side is also where automation is compressing demand fastest. The **infrastructure to run AI reliably** is growing and talent is thin.
+- This niche is specific enough to be differentiated and hireable, but broad enough to stay flexible \u2014 you can later pivot toward LLM inference optimization, data/feature platforms, or applied ML without starting over.
+
+### Your Existing Skills Map Directly
+
+| Your background | Directly maps to in ML |
+|-----------------|------------------------|
+| Kubernetes + database infrastructure | Model serving on k8s, feature stores, vector databases |
+| Service mesh | Multi-model routing, traffic splitting, canary/shadow deploys for models |
+| OpenTelemetry | Inference observability, latency/throughput/cost metrics, drift detection |
+| Container technology | Reproducible training/serving images, GPU scheduling |
+| Service backends | Inference APIs, RAG/LLM serving, structured-output services |
+
+You already own the hard half. The study plan fills in the ML-specific half.
+
+### How to Re-Weight the 12-Week Plan
+
+- **Keep as-is (credibility layer):** Phase 1 (Weeks 1-3), Week 4 architecture, Week 5 fine-tuning basics. Do these well enough to reason about models, but do not over-invest.
+- **Go deep (your differentiation):** Week 6 evaluation/regression, Week 8 inference performance, Week 9 serving + observability, Week 10 distributed systems. These are where your infra background makes you exceptional.
+- **Lighten:** Week 7 alignment \u2014 do the design-review option, not a training experiment. You need literacy here, not depth.
+
+### Specialization Skill Areas to Master
+
+1. **Model serving & inference** — KServe, NVIDIA Triton, vLLM, Ray Serve; autoscaling, canary and shadow deployments (leverages service-mesh experience directly).
+2. **Pipelines & orchestration** — Kubeflow Pipelines, Airflow or Dagster, MLflow for tracking and registry.
+3. **Feature stores & vector databases** — Feast, and a vector DB (pgvector, Milvus, or Qdrant); leverages a database background directly.
+4. **GPU on Kubernetes** — NVIDIA device plugin, GPU scheduling, node autoscaling, cost and utilization management.
+5. **Inference observability** — extend observability skills (e.g. OpenTelemetry) to model-level signals: token throughput, tail latency, drift, refusal/error rates, cost per request.
+
+### Specialization References
+
+- [KServe Documentation](https://kserve.github.io/website/)
+- [NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html)
+- [Ray Serve Documentation](https://docs.ray.io/en/latest/serve/index.html)
+- [Kubeflow Documentation](https://www.kubeflow.org/docs/)
+- [MLflow Documentation](https://mlflow.org/docs/latest/index.html)
+- [Feast Feature Store](https://docs.feast.dev/)
+- [pgvector](https://github.com/pgvector/pgvector), [Milvus](https://milvus.io/docs), [Qdrant](https://qdrant.tech/documentation/)
+- [NVIDIA GPU Operator for Kubernetes](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html)
+- [OpenLLMetry / OpenTelemetry for LLMs](https://github.com/traceloop/openllmetry)
+- [Chip Huyen: Designing Machine Learning Systems](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/)
+- [Google: MLOps Continuous Delivery and Automation Pipelines](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning)
+
+### Recommended Portfolio Adjustment
+
+Keep three projects, but tilt them toward platform work:
+
+1. **Minimal GPT / Transformer from scratch** (Week 3) \u2014 keep, for credibility.
+2. **Fine-Tune + Evaluation with a regression-test harness** (Weeks 5-6) \u2014 emphasize the *reproducible pipeline and eval gates*, not the model quality.
+3. **Production-shaped LLM serving platform on Kubernetes** (Weeks 8-9) — the headline project. Deploy a model on k8s with autoscaling, a canary/shadow rollout path, OpenTelemetry-based inference observability (latency, throughput, cost, drift), and safe model-version release gates. This is where an infrastructure engineer visibly outclasses generalist candidates.
+
+### Interview Positioning for This Track
+
+The story becomes:
+- I can run models reliably at scale on Kubernetes with real observability and safe rollouts.
+- I understand model mechanics well enough to debug training and inference, not just deploy them.
+- I bring service-mesh, container, and observability experience that most ML candidates lack.
+- I design for latency, throughput, cost, and regression safety \u2014 not just demos.
+
+That is a stronger, more defensible narrative than trying to sound like a research scientist.
 
 ---
 
